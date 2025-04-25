@@ -1,4 +1,4 @@
-configparser==6.0.0
-requests==2.31.0
-urllib3==2.1.0
-creditagricole-particuliers==0.14.1
+configparser==7.2.0
+requests==2.32.3
+urllib3==2.4.0
+creditagricole-particuliers==0.14.3
