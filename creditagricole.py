@@ -89,10 +89,24 @@ class CreditAgricoleRegion:
         self.longitude = None
         self.latitude = None
 
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 9; Lenovo TB-X505X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.96 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3',
+            'DNT': '1',
+            'Sec-GPC': '1',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'cross-site',
+            'Priority': 'u=0, i',
+        }
+
         # Find the bank region location
         address = "Credit Agricole " + self.name + ", France"
         url = 'https://nominatim.openstreetmap.org/search.php?q=' + urllib.parse.quote(address) + '&format=jsonv2'
-        response = requests.get(url).json()
+        response = requests.get(url, headers=headers).json()
         if len(response) > 0 and "lon" in response[0] and "lat" in response[0]:
             self.longitude = str(response[0]['lon'])
             self.latitude = str(response[0]['lat'])
